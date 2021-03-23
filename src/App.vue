@@ -6,7 +6,7 @@
    type="text" 
    class="w-100 p-2  " 
    placeholder="할 일을 적으세요!"
-   @keyup.enter="addToDo"
+   @keypress.enter="addToDo"
    >
 
 
