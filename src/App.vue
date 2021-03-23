@@ -3,6 +3,8 @@
    <h1 class= "text-center">Todo App</h1>
 
    <input 
+
+   v-model = "inputtext"
    type="text" 
    class="w-100 p-2  " 
    placeholder="할 일을 적으세요!"
@@ -14,10 +16,14 @@
 <hr>
  
    <Todo 
+   @toggle-checkbox ="toggleInAppVue"
+   @delete-todos = "deleteTodos"
    v-for="todo in todos" 
    :key = "todo.id"
    :todo = "todo"
    />
+
+   {{todos}}
   </div>
 </template>
 
@@ -34,9 +40,12 @@ export default {
     return {
       todos : [
         {id : 1, text : "커피 마시기", checked :false},
-        {id : 2, text : "고양이 밥 주기", checked :true},
+        {id : 2, text : "고양이 밥 주기", checked :false},
         {id : 3, text : "코딩 하기", checked :false},
-      ]
+      ],
+
+      inputtext : ""
+      
     }
   },
 
@@ -49,7 +58,26 @@ export default {
         checked: false
       })
 
-      console.log(this.todos)
+
+      this.inputtext = ""
+    },
+
+    toggleInAppVue({id, checked}){
+      const index = this.todos.findIndex(todo => {
+        return todo.id = id;
+      });
+
+      this.todos[index].checked = checked;
+    },
+
+    deleteTodos(id){
+      /*const index = this.todos.findIndex(todo => {
+        return todo.id = id;
+      });
+
+      this.todos.splice(index,1)*/
+
+      this.todos = this.todos.filter(todo => todo.id != id)
     }
   }
 }
