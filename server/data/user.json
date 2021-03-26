@@ -1,0 +1,21 @@
+
+[
+    {
+    "id" : "james",
+    "password" : "1234",
+    "name" : "제임스"
+
+    },
+    {
+        "id" : "donald",
+        "password" : "0000",
+        "name" : "도날드"
+    
+    },
+    {
+            "id" : "john",
+            "password" : "9999",
+            "name" : "요한"
+        
+    }
+]
