@@ -10,12 +10,12 @@
                 </a> 
 
                 <div class = "navbar-gender-wrapper">
-                    <button type="button" class = "navbar-button navbar-highlight"> <!--navbar highlight 기능은 눌렸을 때 안눌렸을 때 켜지는 걸 다르게 해야한다-->
-                        <img src = "https://www.lookpin.co.kr/static/media/img-gnb-men-on.89a3900e.svg" alt = "Men"/>
+                    <button v-on:click="menClick" type="button" class = "navbar-button navbar-highlight" id="menBtn"> <!--navbar highlight 기능은 눌렸을 때 안눌렸을 때 켜지는 걸 다르게 해야한다-->
+                        <img src = "https://www.lookpin.co.kr/static/media/img-gnb-men-on.89a3900e.svg" alt = "Men" id="menBtn-image"/>
                     </button>
 
-                    <button type="button" class = "navbar-button">
-                        <img src = "https://www.lookpin.co.kr/static/media/img-gnb-women-off.49fd73b7.svg" alt = "Women"/>
+                    <button v-on:click="womenClick" type="button" class = "navbar-button" id="womenBtn">
+                        <img src = "https://www.lookpin.co.kr/static/media/img-gnb-women-off.49fd73b7.svg" alt = "Women" id="womenBtn-image"/>
                     </button>
                 </div>
 
@@ -58,9 +58,30 @@ export default {
   components: {  },
     data(){
         return {
-           imageURL : []
+            imageURL : [],
+            menOn :"https://www.lookpin.co.kr/static/media/img-gnb-men-on.89a3900e.svg",
+            menOff : "https://www.lookpin.co.kr/static/media/img-gnb-men-off.c4dd0a2a.svg",
+            womenOn : "https://www.lookpin.co.kr/static/media/img-gnb-women-on.692ff5d4.svg",
+            womenOff : "https://www.lookpin.co.kr/static/media/img-gnb-women-off.49fd73b7.svg"
+        }
+    },
+
+    methods: {
+
+        menClick() {
+            document.getElementById("menBtn").style.borderBottom = "4px solid #f23538";
+            document.getElementById("womenBtn").style.borderBottom = "4px solid #121517";
+            document.getElementById("menBtn-image").setAttribute('src',this.menOn);
+            document.getElementById("womenBtn-image").setAttribute('src',this.womenOff);
+        },
+        womenClick() {
+            document.getElementById("menBtn").style.borderBottom = "4px solid #121517";
+            document.getElementById("womenBtn").style.borderBottom = "4px solid #f23538";
+            document.getElementById("menBtn-image").setAttribute('src',this.menOff);
+            document.getElementById("womenBtn-image").setAttribute('src',this.womenOn);
         }
     }
+
 }
 </script>
 
@@ -97,12 +118,19 @@ export default {
 
 .navbar-gender-wrapper{
     margin-left : 24px;
+    height: 52px;
+    display: flex;
 }
 
 .navbar-button{
     cursor : pointer;
-    padding :0;
-    height: 50px;
+    padding : 0;
+    box-sizing: border-box;
+}
+
+#womenBtn {
+    margin-left: 28px;
+    border-bottom: 4px solid #121517;
 }
 
 button{
