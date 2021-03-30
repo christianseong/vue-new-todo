@@ -62,7 +62,7 @@ ul{
 
 .sidebar_side{
     float: left;
-    width: 82px;
+    width: 94px;
     margin-top: 148px;
     margin-bottom: 20px;
     padding-left: 12px;
@@ -106,7 +106,8 @@ ol, ul{
 
 .Sidebar_category__3EcvU{
     color : #343a40;
-    font-size: 16px;
+    font-size: 14px;
+    font-weight: bold;
 }
 
 a{
@@ -123,7 +124,6 @@ a{
 
 .sidebar_category_a{
     color: #343a40 !important;
-
 }
 
 .Sidebar_sub{
