@@ -65,7 +65,6 @@ ul{
     width: 94px;
     margin-top: 148px;
     margin-bottom: 20px;
-    padding-left: 12px;
     text-align: left;
 }
 

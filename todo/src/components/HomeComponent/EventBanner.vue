@@ -58,8 +58,12 @@ export default {
   }
   .VueCarousel-navigation {
     position: absolute;
-    bottom: 90px;
+    bottom: 140px;
     right: 29px;
+  }
+  .VueCarousel-pagination {
+    text-indent: 999999px;
+    overflow: hidden;
   }
   .eventbanner_tab img{
     width: 100%;

@@ -1,5 +1,5 @@
 <template>
-  <div id="app" class="container">
+  <div id="app">
 
   <!--
    <h1 class= "text-center">Todo App</h1>
@@ -106,10 +106,18 @@ export default {
 <style>
 #app {
   font-family: 'Noto Sans KR', sans-serif;
-  -webkit-font-smoothing: antialiased;
+  /* -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  margin-top: 60px; */
+  text-align: center;
+  -webkit-font-smoothing: antialiased;
+  margin: 0 auto;
+  min-width: 1100px;
+  min-height: 100%;
+  height: 100%;
+  width: 1100px;
+  padding: 0px 10px;
 }
 </style>
