@@ -7,7 +7,9 @@
                 </li>
             </div>
 
-        <SidebarWrapper v-for ="i in 8" :key={i}></SidebarWrapper>
+        <SidebarWrapper v-for ="(i,idx)  in 8" :key = idx>
+    
+        </SidebarWrapper>
             
 
             
@@ -22,7 +24,10 @@ import SidebarWrapper from './AsideComponent/SidebarWrapper'
 export default {
     data(){
         return{
-
+             items: [
+                { message: 'Foo' },
+                { message: 'Bar' }
+            ]
         }
     },
     components:{

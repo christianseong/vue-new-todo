@@ -1,7 +1,7 @@
 <template>
 <div class="categoryWrapper">
   <SideMain/>
-  <SidebarSub v-for ="i in 10" :key={i}></SidebarSub>
+  <SidebarSub v-for ="(i,idx) in 10" :key=idx></SidebarSub>
 </div>
 </template>
 

@@ -1,54 +1,62 @@
-require('dotenv').config()
+const express = require('express');
 
-const express = require('express')
-const mongoose = require('mongoose')
-const bodyParser = require('body-parser')
+const mongoose = require('mongoose');
 
-const { User } = require('./models/User')
-
-
-var loginRouter = require('./routes/login');
-
+const User = require("./models/user");
 
 const app = express();
-
-const port = process.env.PORT || 4500;
-
-const cors = require('cors');
-app.use(cors());
-
-app.use(express.static('public'));
-
-app.use(bodyParser.urlencoded( {extended : true}));
-
-app.use(bodyParser.json());
+const port = 3000;
 
 
-app.use('/api/login', loginRouter);
+mongoose
+  .connect("mongodb+srv://christian:christian@cluster0.5cnsr.mongodb.net/shoppingMall?retryWrites=true&w=majority", {
+    useNewUrlParser: true,
+    useCreateIndex: true,
+  })
+  .then(() => {
+    console.log("Connected to MongoDB");
+  })
+  .catch((err) => {
+    console.log(err);
+  });
+  
+app.use(express.json());
 
+app.get("/", async (req,res) =>{
+    try{
+        res.send("connect")
+    }catch(err){
+        console.log("error");
+    }
 
-
-mongoose.Promise = global.Promise
-
-mongoose.connect(process.env.MONODB_URI)
-.then(()=> console.log('Successfully connected to mongodb'))
-.catch(e => console.error(e));
-
-app.post('/register' , (req,res) =>{
-    const user = new User(req.body)
-
-    user.save((error, userInfo) => {
-        if(error) return res.json({success: false , error})
-
-        return res.status(200).json({
-            success : true
-        })
-    })
 })
 
-app.get('/', (req,res) => res.send('Develog!'))
+
+app.post("/users", async (req, res) => {
+
+    console.log(req.body);
+    console.log(res);
+
+    const user = new User(req.body);
+  
+    try {
+      await user.save();
+      res.status(204).send();
+    } catch (e) {
+      res.status(500).json({
+        message: "User 저장 실패",
+      });
+    }
+  });
 
 
-app.listen(port , ()  => console.log(`Server is listening port ${port}`))
 
+app.get("/users", async (req,res) =>{
+    try{
+        
+    }
+})
 
+app.listen(port, () => {
+    console.log("Server is up on port " + port);
+  });
