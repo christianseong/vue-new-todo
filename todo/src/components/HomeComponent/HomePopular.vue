@@ -8,7 +8,7 @@
 
         <div class="home_popular_flex">
             <ul class="home_column_direction">
-                <HomePopularA  v-for = "(i,idx) in 10" :key = "{idx}" v-bind:getIdx="i"></HomePopularA>
+                <HomePopularA  v-for = "(i,idx) in 10" :key = "idx" ></HomePopularA>
             
             </ul>
         </div>
@@ -21,6 +21,33 @@ import HomePopularA from './HomePopularA';
 
 export default {
   components: { HomePopularA },
+  data(){
+      return {
+          post:{
+              index : 0,
+              category : []
+
+          }
+      }
+  },
+  created(){
+        this.$http.get('http://localhost:3000/product/category',{
+            headers :{
+                    'Access-Control-Allow-Origin': '*',
+                    'Content-Type': 'application/json; charset = utf-8'
+            }
+        })
+        .then((res) => {
+            const result = res.data;
+            console.log(result);
+            if(result) this.category.push(result);
+
+
+        })
+        .catch((err)=>{
+            console.error(err);
+        });
+    },
 
 
 }

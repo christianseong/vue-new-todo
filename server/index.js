@@ -3,10 +3,17 @@ const express = require('express');
 const mongoose = require('mongoose');
 
 const User = require("./models/user");
+const ProdCategory = require('./models/prodcategory');
+
+const cors = require('cors');
+
+
+
+
 
 const app = express();
 const port = 3000;
-
+app.use(cors());
 
 mongoose
   .connect("mongodb+srv://christian:christian@cluster0.5cnsr.mongodb.net/shoppingMall?retryWrites=true&w=majority", {
@@ -48,6 +55,33 @@ app.post("/users", async (req, res) => {
       });
     }
   });
+
+
+
+app.post("/product/category/post", async (req, res) => {
+
+  console.log(req.body);
+  console.log(res);
+
+  const prod = new ProdCategory(req.body);
+
+  try {
+    await prod.save();
+    res.status(204).send();
+  } catch (e) {
+    res.status(500).json({
+      message: "Prod 저장 실패",
+    });
+  }
+});
+
+
+app.get('/product/category', function(req,res){
+  ProdCategory.find(function(err, books){
+      if(err) return res.status(500).send({error: 'database failure'});
+      res.json(books);
+  })
+});
 
 
 

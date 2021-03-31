@@ -86,7 +86,7 @@ export default {
         this.$refs.carousel_slide.style.transition = "transform 0.4s ease-in-out"
         this.counter++;
         this.$refs.carousel_slide.style.transform = 'translateX('+(-(this.$refs.img0.clientWidth+0.5)*this.counter)+'px)';
-        console.log(current);
+        //console.log(current);
 
           if(eval(current) === 'firstClone'){
           this.$refs.carousel_slide.style.transition ="none";
@@ -115,7 +115,7 @@ export default {
   
     watch : {
       counter(){
-        console.log("changed");
+        //console.log("changed");
         setTimeout(()=>{
         this.nextBtnClick()
         },3000)

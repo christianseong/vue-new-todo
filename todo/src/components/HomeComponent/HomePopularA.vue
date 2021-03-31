@@ -15,13 +15,19 @@
 export default {
  data(){
      return{
-        rank : 1
+        rank : 1,
+        category : null
      }
  },
 
  props : {
-     getIdx : Number
- }
+     
+        getIdx : Number,
+        categoryFrom : Array,
+     
+     
+ },
+
 }
 </script>
 
