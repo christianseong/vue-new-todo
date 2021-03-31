@@ -51,11 +51,7 @@ app.post("/users", async (req, res) => {
 
 
 
-app.get("/users", async (req,res) =>{
-    try{
-        
-    }
-})
+
 
 app.listen(port, () => {
     console.log("Server is up on port " + port);
